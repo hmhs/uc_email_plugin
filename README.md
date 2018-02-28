@@ -1,14 +1,6 @@
-# IBM UrbanCode Deploy Plug-in Template
+# IBM UrbanCode Email Plugin
 ---
 
-The UrbanCode Deploy Plug-in Template project is a sample project that can be forked and used as a base for community plug-ins.
-
-Create your own plug-in by following our [beginner](https://developer.ibm.com/urbancode/docs/urbancode-plug-development-tutorial/) and [upgrade](https://developer.ibm.com/urbancode/docs/community-plug-development-upgrade-tutorial/) tutorials. For more documentation on plug-in development, see the [IBM UrbanCode Build help](http://www-01.ibm.com/support/knowledgecenter/SS8NMD_6.1.2/com.ibm.ucbuild.doc/topics/c_node_extend.html) or the [IBM UrbanCode Deploy help](http://www.ibm.com/support/knowledgecenter/SS4GSP_6.2.1/com.ibm.udeploy.doc/topics/c_node_extending.html).
-
-### Compiling Source
-`gradle`
-
-The helloworld plug-in .zip file can be found in build/distributions after you build the project.
-
-### License
-This plugin is protected under the [Eclipse Public 1.0 License](http://www.eclipse.org/legal/epl-v10.html)
+This plugin enables a process step to email a team.  The email subject, body, and attachment may be entered and configured.
+The plugin works with both UC Build and UC Deploy.  However, the querying of the teams and email must be done in UC Deploy.
+This is because the REST service in UC Build are not built out to obtain the team and email addresses based on the process.
