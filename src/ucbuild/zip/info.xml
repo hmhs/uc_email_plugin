@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pluginInfo>
+  <!-- Do not change the release-version, the build process injects it. -->
+  <release-version>@RELEASE_VERSION@</release-version>
+
+  <release-notes>
+    <!--
+      The release-note should document the changes, improvements, or bug fixes introduced
+      with the new plugin version
+
+      The release-note may contain text
+
+      For example your release note could be:
+      Support for was added for version 10.0 for software X
+
+      To add a new release note add this with a description in it of the changes:
+      <release-note plugin-version="1">....</release-note>
+    -->
+
+    <release-note plugin-version="1">
+      Initial creation of emailing of a Team assigned to the component plugin
+    </release-note>
+    <release-note plugin-version="2">
+      Fixed select box on the plugin for by app/comp
+    </release-note>
+  </release-notes>
+</pluginInfo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/javaee"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="6"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                                 http://java.sun.com/xml/ns/javaee/application_6.xsd"><description></description>
+	<display-name>rbsmbl</display-name>
+	<icon></icon><module id="WebModule_1256593426389">
+		<web>
+			<web-uri>rbsMobile.war</web-uri>
+			<context-root>/rbsmbl</context-root>
+		</web>
+	</module>
+	<security-role>
+		<role-name>log4jAdmin</role-name>
+	</security-role>
+</application>

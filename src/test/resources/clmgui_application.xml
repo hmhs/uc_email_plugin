@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/application_5.xsd">
+	<display-name>
+	CLMGUI</display-name>
+	<icon></icon><module id="Module_1313004407942">
+		<web>
+			<web-uri>CLMGUIWeb.war</web-uri>
+			<context-root>clmgui</context-root>
+		</web>
+	</module>
+	<security-role id="SecurityRole_1236185474998">
+		<description>
+		User would be able to add a letter template</description>
+		<role-name>Alg_Add</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236185474999">
+		<description>
+		User role would be able to copy a letter template</description>
+		<role-name>Alg_Copy</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738779">
+		<description>
+		User role would be able to update a letter template</description>
+		<role-name>Alg_Update</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738794">
+		<description>
+		User role would be able to delete a letter template</description>
+		<role-name>Alg_Delete</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738795">
+		<description>
+		Groups of users who have access to Print of ALG</description>
+		<role-name>Alg_Print</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738797">
+		<description>
+		User roles who will have access to delete adjustment of claim</description>
+		<role-name>Cmu_Delete</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738798">
+		<description>
+		User roles who will have access to adjustment reset of claim</description>
+		<role-name>Cmu_AdjustmentReset</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738799">
+		<description>
+		User roles who will have access to search the claim</description>
+		<role-name>Cmu_Search</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738800">
+		<description>
+		User roles who will have access to update claim code for CMU</description>
+		<role-name>Cmu_UpdateClaimCodes</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236191738801">
+		<description>
+		User roles who will have access home page</description>
+		<role-name>Hp_View</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1236891359923">
+		<description>
+		Inquiry page for Admin of ALG</description>
+		<role-name>Alg_AdminInquiry</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1246308542194">
+		<description>
+		Inquiry access for CCT pages</description>
+		<role-name>Cct_Inquiry</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1246308542193">
+		<description>
+		Administrator for Claims CCTs</description>
+		<role-name>Cct_ClaimsAdmin</role-name>
+	</security-role>
+	
+	
+	
+	<security-role id="SecurityRole_1247665338044">
+		<description>
+		Administrator for Benefits CCTs</description>
+		<role-name>Cct_BenefitsAdmin</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1247665943590">
+		<description>
+		Administrators for Finance CCTs</description>
+		<role-name>Cct_FinanceAdmin</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1264443898663">
+		<description>
+		BCBSMN Inquiry access for CCT pages</description>
+		<role-name>Cct_BCBSMNInquiry</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1260804052077">
+		<description>
+		Pega Release 1 role</description>
+		<role-name>Claims_Work_Flow</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1260804052139">
+		<description>
+		Pega Release 1 role</description>
+		<role-name>Group_Inquirer</role-name>
+	</security-role>
+	
+	
+	
+	<security-role id="SecurityRole_1264443898662">
+		<description>
+		User who can view ALG Data</description>
+		<role-name>Alg_ViewInquiry</role-name>
+	</security-role>	
+	<security-role id="SecurityRole_1263841243765">
+		<description>
+		Accums Create Role</description>
+		<role-name>Acc_Create</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1263919696627">
+		<description>
+		Accums Update</description>
+		<role-name>Acc_Update</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1263919888059">
+		<description>
+		Accums Admin Inquiry</description>
+		<role-name>Acc_Admininquiry</role-name>
+	</security-role>
+	<security-role id="SecurityRole_1263920369715">
+		<description>
+		Accums View Inquiry</description>
+		<role-name>Acc_Viewinquiry</role-name>
+	</security-role>	
+
+	
+	<security-role>
+		<description>Administration</description>
+		<role-name>administration</role-name>
+	</security-role>	
+	
+	<security-role>
+		<description>VIEW SENSITIVE DATA</description>
+		<role-name>VIEW_DATA</role-name>
+	</security-role>
+	<security-role>
+		<description>Create and Edit Request</description>
+		<role-name>createAndEditRequest</role-name>
+	</security-role>
+	<security-role>
+		<description>Create and Edit Work Item</description>
+		<role-name>createAndEditWorkItem</role-name>
+	</security-role>
+	<security-role>
+		<role-name>noOne</role-name>
+	</security-role></application>

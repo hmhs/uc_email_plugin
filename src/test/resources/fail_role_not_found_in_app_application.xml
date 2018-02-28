@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application id="Application_ID" version="1.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+        <display-name>EMDSVC</display-name>
+        <module id="WebModule_1286297150437">
+                <web>
+                        <web-uri>EMDSVCWeb.war</web-uri>
+                        <context-root>emdsvc</context-root>
+                </web>
+        </module>
+        <security-role id="SecurityRole_1286297206234">
+                <description>
+                Allows inquiry only.</description>
+                <role-name>viewerRole</role-name>
+        </security-role>
+        <security-role id="SecurityRole_1286297206235">
+                <description>
+                Allows inquiry, create, update, delete.</description>
+                <role-name>maintainerRole</role-name>
+        </security-role>
+        <security-role>
+                <description>
+                Role with no groups assigned for securing http methods not specified in a Security Constraint.</description>
+                <role-name>noRole</role-name>
+        </security-role>
+</application>

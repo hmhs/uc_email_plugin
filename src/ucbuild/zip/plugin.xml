@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.urbancode.com/PluginXMLSchema_v1"
+        xmlns:server="http://www.urbancode.com/PluginServerXMLSchema_v1"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <header>
+    <identifier id="com.hmhs.underpinning.uc.ucd_email_plugin" version="@API_VERSION@" name="Email Team"/>
+    <description>Email Team Plugin for UC Deployy</description>
+    <tag>Utilities/Email Team Plugin</tag>
+  </header>
+
+  <step-type name="Send Email to Team">
+    <description>Run a process to email members of the team assigned to the component or application</description>
+    <properties>
+      <property name="emailSubject" required="true">
+        <property-ui type="textBox"
+                     label="Subject"
+                     description="Email Subject"/>
+      </property>
+      <property name="emailBody" required="true">
+        <property-ui type="textAreaBox"
+                     label="Body"
+                     description="Email Body"/>
+      </property>
+      <property name="attachment" required="false">
+        <property-ui type="textBox"
+                     label="Attachment"
+                     description="Location of attachment to include in the email"/>
+      </property>
+      <property name="roles" required="false">
+        <property-ui type="textBox"
+                     label="Roles"
+                     description="Comma separated List of Roles to send email to"/>
+      </property>
+      <property name="appCompName" required="true">
+        <property-ui type="textBox"
+                     label="Component/Applicaiton Name"
+                     description="Name of the UC Deploy application or component"/>
+      </property>
+      <property name="getTeamBy" required="true">
+        <property-ui type="selectBox"
+                     label="Obtain Team By:"
+                     description="How to obtain the team, by application or by component"/>
+        <value label="By Application">byApp</value>
+        <value label="By Component">byComp</value>
+      </property>
+      <property name="ucdUrl" required="true">
+        <property-ui type="textBox"
+                     label="UC Deploy URL"
+                     description="URL of UC Deploy to query for the team information"/>
+      </property>
+      <property name="ucdUserNamee" required="true">
+        <property-ui type="textBox"
+                     label="UC Deploy User Name"
+                     description="ID of UC Deploy user to use when connecting"/>
+      </property>
+      <property name="ucdPassword" required="true">
+        <property-ui type="secureBox"
+                     label="UC Deploy Password"
+                     description="Password of UC Deploy user to use when connecting"/>
+      </property>
+    </properties>
+    <post-processing>
+      <![CDATA[
+        if (properties.get("exitCode") != 0) {
+            properties.put(new java.lang.String("Status"), new java.lang.String("Failure"));
+        }
+        else {
+            properties.put("Status", "Success");
+        }
+     ]]>
+    </post-processing>
+
+    <command program="${GROOVY_HOME}/bin/groovy">
+      <arg value="-cp"/>
+      <arg path="classes:lib/activation-1.1.jar;lib/groovy-all-2.4.12.jar;lib/groovy-plugin-utils-1.0.jar;lib/gson-2.3.1.jar;lib/mail-1.4.1.jar;lib/uDeployRestClient-1.0.jar"/>
+      <arg file="classes/emailTeam.groovy"/>
+      <arg file="${PLUGIN_INPUT_PROPS}"/>
+      <arg file="${PLUGIN_OUTPUT_PROPS}"/>
+    </command>
+  </step-type>
+</plugin>

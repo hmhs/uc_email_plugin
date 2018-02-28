@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application-bnd
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://websphere.ibm.com/xml/ns/javaee"
+    xsi:schemaLocation="http://websphere.ibm.com/xml/ns/javaee http://websphere.ibm.com/xml/ns/javaee/ibm-application-bnd_1_0.xsd" version="1.0">
+  <security-role name="Alg_Add">
+    <group name="CLM ALG Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Alg_Copy">
+    <group name="CLM ALG Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Alg_Update">
+    <group name="CLM ALG Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Alg_Delete">
+    <group name="CLM ALG Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Alg_Print">
+    <group name="CLM ALG Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Cmu_Delete">
+    <group name="CLM CMU Delete Specialist-INT"/>
+    <group name="CLM CMU BlueCard Home Delete Specialist-INT"/>
+    <group name="CLM CMU BlueCard Host Delete Specialist-INT"/>
+    <group name="CLM CMU FEP Delete Specialist-INT"/>
+  </security-role>
+
+  <security-role name="Cmu_AdjustmentReset">
+    <group name="CLM CMU Reset Specialist-INT"/>
+    <group name="CLM CMU BlueCard Home Reset Specialist-INT"/>
+    <group name="CLM CMU BlueCard Host Reset Specialist-INT"/>
+    <group name="CLM CMU FEP Reset Specialist-INT"/>
+  
+  </security-role>
+
+  <security-role name="Cmu_Search">
+    <group name="CLM CMU Reset Specialist-INT"/>
+    <group name="CLM CMU BlueCard Home Reset Specialist-INT"/>
+    <group name="CLM CMU BlueCard Host Reset Specialist-INT"/>
+    <group name="CLM CMU FEP Reset Specialist-INT"/>
+    <group name="CLM CMU In Process Specialist-INT"/>
+    <group name="CLM CMU BlueCard Home In Process Specialist-INT"/>
+    <group name="CLM CMU BlueCard Host In Process Specialist-INT"/>
+    <group name="CLM CMU FEP In Process Specialist-INT"/>
+    <group name="CLM CMU Administrator-INT"/>
+    <group name="CLM CMU BlueCard Home Administrator-INT"/>
+    <group name="CLM CMU BlueCard Host Administrator-INT"/>
+    <group name="CLM CMU FEP Administrator-INT"/>
+    <group name="CLM CMU Delete Specialist-INT"/>
+    <group name="CLM CMU BlueCard Home Delete Specialist-INT"/>
+    <group name="CLM CMU BlueCard Host Delete Specialist-INT"/>
+    <group name="CLM CMU FEP Delete Specialist-INT"/>
+  </security-role>
+
+  <security-role name="Cmu_UpdateClaimCodes">
+    <group name="CLM CMU In Process Specialist-INT"/>
+    <group name="CLM CMU BlueCard Home In Process Specialist-INT"/>
+    <group name="CLM CMU BlueCard Host In Process Specialist-INT"/>
+    <group name="CLM CMU FEP In Process Specialist-INT"/>
+    <group name="CLM CMU Administrator-INT"/>
+    <group name="CLM CMU BlueCard Home Administrator-INT"/>
+    <group name="CLM CMU BlueCard Host Administrator-INT"/>
+    <group name="CLM CMU FEP Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Hp_View">
+    <group name="CLM Claims User-INT"/>
+    <special-subject type="ALL_AUTHENTICATED_USERS"/>
+
+  </security-role>
+
+  <security-role name="Alg_AdminInquiry">
+    <group name="CLM ALG Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Cct_ClaimsAdmin">
+    <group name="CLM CCT Claims Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Cct_Inquiry">
+    <group name="CLM CCT Inquirer-INT"/>
+  </security-role>
+
+  <security-role name="Cct_BenefitsAdmin">
+    <group name="CLM CCT Benefits Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Cct_FinanceAdmin">
+    <group name="CLM CCT Finance Administrator-INT"/>
+  </security-role>
+  
+  <security-role name="Cct_BCBSMNInquiry">
+    <group name="CLM CCT Inquirer Minnesota-INT"/>
+  </security-role>
+
+  <security-role name="Claims_Work_Flow">
+    <group name="CLM Claims Work Flow-INT"/>
+  </security-role>
+
+  <security-role name="Group_Inquirer">
+    <group name="CLM-Group Inquirer-INT"/>
+  </security-role>
+
+  
+
+  <security-role name="Alg_ViewInquiry">
+    <group name="CLM ALG Viewer-INT"/>
+  </security-role>
+
+  <security-role name="Acc_Create">
+    <group name="CLM ACC Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Acc_Update">
+    <group name="CLM ACC Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Acc_Admininquiry">
+    <group name="CLM ACC Administrator-INT"/>
+  </security-role>
+
+  <security-role name="Acc_Viewinquiry">
+    <group name="CLM ACC Inquirer-INT"/>
+  </security-role>
+
+  <security-role name="VIEW_DATA">
+    <group name="VIEW-SENSITIVE-DATA-INT"/>
+  </security-role>
+  
+  <security-role name="administration"></security-role>
+  <security-role name="createAndEditRequest"></security-role>
+  <security-role name="createAndEditWorkItem"></security-role>
+  <security-role name="noOne"></security-role></application-bnd>
+

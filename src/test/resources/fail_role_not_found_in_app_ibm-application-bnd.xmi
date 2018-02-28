@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationbnd:ApplicationBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:applicationbnd="applicationbnd.xmi" xmi:id="ApplicationBinding_1286297206234">
+  <authorizationTable xmi:id="AuthorizationTable_1286297206234">
+    <authorizations xmi:id="RoleAssignment_1286297206234">
+      <role href="META-INF/application.xml#SecurityRole_1286297206234"/>
+      <groups xmi:id="Group_1286297206234" name="CONPRO_APP_VIEW-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1286297206235">
+      <role href="META-INF/application.xml#SecurityRole_1286297206235"/>
+      <groups xmi:id="Group_1286297206249" name="CONPRO_APP_MAINTAIN-INT"/>
+    </authorizations>
+  </authorizationTable>
+  <application href="META-INF/application.xml#Application_ID"/>
+</applicationbnd:ApplicationBinding>

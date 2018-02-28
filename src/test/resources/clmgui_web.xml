@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<display-name>clmgui</display-name>
+	
+	
+	<context-param>
+    	<param-name>facelets.LIBRARIES</param-name>
+	    <param-value>/META-INF/hmkweb.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>facelets.RESOURCE_RESOLVER</param-name>
+		<param-value>com.highmark.base.facelets.customTags.CustomResourceResolver</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>facelets.DEVELOPMENT</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>server</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.icesoft.faces.uploadDirectory</param-name>
+		<param-value>upload</param-value>
+	</context-param>
+	<context-param>
+		<param-name>com.icesoft.faces.uploadMaxFileSize</param-name>
+		<param-value>4048576</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>com.icesoft.faces.synchronousUpdate</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!--  Allows for Icefaces page level scoping -->
+	<context-param>
+		<param-name>com.icesoft.faces.standardRequestScope</param-name>
+		<param-value>false</param-value>
+	</context-param>
+
+	<!--  Allows for Multiple Open Browsers -->
+	<context-param>
+		<param-name>com.icesoft.faces.concurrentDOMViews</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<context-param>
+		<description>
+			The default suffix for extension-mapped resources that
+			contain JSF components. Default is '.jsp'.
+		</description>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.jspx</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			Number of Views to be stored in the session when Server-Side
+			State Saving is being used. Default is 15.
+		</description>
+		<param-name>
+			com.sun.faces.NUMBER_OF_VIEWS_IN_SESSION
+		</param-name>
+		<param-value>15</param-value>
+	</context-param>
+	
+	<!--  Mike Darrin - adding for Concurrent View issue. -->
+	<context-param>
+		<description>
+			Icefaces concurrent view limit
+		</description>
+		<param-name>
+			com.icesoft.faces.concurrentViewLimit
+		</param-name>
+		<param-value>50</param-value>
+	</context-param>
+	
+	<context-param>
+		<description>
+			If set to true while server-side state saving is being used,
+			a serialized representation of the view is stored on the
+			server. This allows for failover and sever clustering
+			support. Default is false. This parameter is not available
+			in JSF 1.0.
+		</description>
+		<param-name>com.sun.faces.enableHighAvailability</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			If set to true while client-side state saving is being used,
+			reduces the number of bytes sent to the client by
+			compressing the state before it is encoded and written as a
+			hidden field. Default is false. This parameter is not
+			available in JSF 1.0.
+		</description>
+		<param-name>com.sun.faces.COMPRESS_STATE</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			Monitors Faces JSP files for modifications and synchronizes
+			a running server with the changes without restarting the
+			server. If this parameter is set to false or removed from
+			the deployment descriptor, any changes made to Faces JSP
+			files may not be seen by the server until it is restarted.
+			This parameter is usually set to true while the Faces JSP
+			files are being developed and debugged in order to improve
+			the performance of the development environment.
+		</description>
+		<param-name>com.ibm.ws.jsf.JSP_UPDATE_CHECK</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	<context-param>
+		<description>
+			Load JSF runtime when the application server starts up. If
+			this parameter is set to false or removed, JSF runtime will
+			be loaded and initialized when the first JSF request is
+			processed. This may disable custom JSF extensions, such as
+			factories defined in the project.
+		</description>
+		<param-name>
+			com.ibm.ws.jsf.LOAD_FACES_CONFIG_AT_STARTUP
+		</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+
+
+	
+
+	<!-- Prevent connection timeouts -->
+	<context-param>
+	 	<param-name>com.icesoft.faces.connectionTimeout</param-name>
+	 	<param-value>890000</param-value>
+	</context-param><!-- Redirect page for lost connections -->
+	<context-param>
+		<param-name>com.icesoft.faces.connectionLostRedirectURI</param-name>
+		<param-value>'/pages/common/inactiveSession.jsp'</param-value>
+	</context-param>
+	<!-- Redirect page for expired session -->
+	<context-param>
+		<param-name>com.icesoft.faces.sessionExpiredRedirectURI</param-name>
+		<param-value>'/pages/common/inactiveSession.jsp'</param-value>
+	</context-param>
+	<context-param>
+		<description>
+		</description>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/applicationContext.xml;/WEB-INF/accums-applicationContext.xml;/WEB-INF/userFactoryConfiguration.xml</param-value>
+	</context-param>
+	
+
+	<!-- Session timeout parameter -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config> 
+	
+
+	<listener>
+		<listener-class>
+			com.icesoft.faces.util.event.servlet.ContextEventRepeater
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			com.sun.faces.config.ConfigureListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.highmark.clmgui.common.utilities.SessionListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.highmark.clmgui.common.utilities.AttributeListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>Persistent Faces Servlet</servlet-name>
+		<servlet-class>
+			com.icesoft.faces.webapp.xmlhttp.PersistentFacesServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>Blocking Servlet</servlet-name>
+		<servlet-class>
+			com.icesoft.faces.webapp.xmlhttp.BlockingServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>
+			com.icesoft.faces.component.inputfile.FileUploadServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet>
+         <description>
+         </description>
+         <display-name>
+          Log4jConfigurationServlet</display-name>
+         <servlet-name>Log4jConfigurationServlet</servlet-name>
+         <servlet-class>
+         org.apache.log4j.servlet.ConfigurationServlet</servlet-class>
+    </servlet>
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	
+	<!-- Added for log4j -->
+    <servlet-mapping>
+           <servlet-name>Log4jConfigurationServlet</servlet-name>
+           <url-pattern>/Log4jConfigurationServlet</url-pattern>
+    </servlet-mapping>
+	
+	
+
+	<!--  This filter is for logging HTTP requests for troubleshooting purposes.
+		It still requires enabling of logging via log4j configuration. -->
+	<filter>
+		<display-name>RequestLoggingFilter</display-name>
+		<filter-name>RequestLoggingFilter</filter-name>
+		<filter-class>
+			org.springframework.web.filter.CommonsRequestLoggingFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>RequestLoggingFilter</filter-name>
+		<url-pattern>/*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>RequestLoggingFilter</filter-name>
+		<url-pattern>/*.iface</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>RequestLoggingFilter</filter-name>
+		<url-pattern>/block/send-receive-updates</url-pattern>
+	</filter-mapping>
+
+	<!-- Filter for implementing Open Entity Manager In View pattern.
+		This pattern creates a separate persistence context for each HTTP request
+		that has a URL matching patterns below. This prevents detached objects
+		which cause lazy load exceptions in the presentation layer.  --> 
+	<filter>
+		<display-name>OpenEntityManagerInViewFilter</display-name>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<filter-class>
+			org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*.iface</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/block/send-receive-updates</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/previewReport</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>OpenEntityManagerInViewFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<display-name>UserContextFilter</display-name>
+		<filter-name>UserContextFilter</filter-name>
+		<filter-class>
+			com.highmark.base.security.jee.UserFilter
+		</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UserContextFilter</filter-name>
+		<url-pattern>/*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserContextFilter</filter-name>
+		<url-pattern>/*.iface</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserContextFilter</filter-name>
+		<url-pattern>/block/send-receive-updates</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserContextFilter</filter-name>
+		<url-pattern>/previewReport</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>UserContextFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+  	  <filter-name>CompatibilityModeFilter</filter-name>
+   	 <filter-class>com.highmark.clmgui.web.filter.CompatibilityModeFilter</filter-class>
+    </filter>
+    <filter-mapping>
+     <filter-name>CompatibilityModeFilter</filter-name>
+     <url-pattern>/*.jsp</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>CompatibilityModeFilter</filter-name>
+		<url-pattern>/*.iface</url-pattern>
+	</filter-mapping>
+
+
+
+
+ 
+	<servlet-mapping>
+		<servlet-name>Persistent Faces Servlet</servlet-name>
+		<url-pattern>/xmlhttp/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Persistent Faces Servlet</servlet-name>
+		<url-pattern>*.iface</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Blocking Servlet</servlet-name>
+		<url-pattern>/block/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>/uploadHtml</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>
+		/faces/*</url-pattern>
+	</servlet-mapping>
+	
+	
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<security-constraint>
+		<display-name>All Web Resources</display-name>
+		<web-resource-collection>
+			<web-resource-name>All Pages</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>View Roles</description>
+			<role-name>Hp_View</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-constraint>
+		<display-name>Administration</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Admin Pages
+			</web-resource-name>
+			<url-pattern>/admin/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Administration</description>
+			<role-name>administration</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<security-constraint>
+		<display-name>Work Item Maintenance</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Work Item Maintenance Pages
+			</web-resource-name>
+			<url-pattern>/workitems/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>
+			Create and Edit Work Item</description>
+			<role-name>createAndEditWorkItem</role-name>
+		</auth-constraint>
+	</security-constraint>
+		<security-constraint>
+		<display-name>Request Maintenance</display-name>
+		<web-resource-collection>
+			<web-resource-name>
+				Request Maintenance Pages
+			</web-resource-name>
+			<url-pattern>/requests/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>PUT</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Create Edit Requests</description>
+			<role-name>createAndEditRequest</role-name>
+		</auth-constraint>
+	</security-constraint>
+	<security-role>
+		<description>Allows access to work items</description>
+		<role-name>administration</role-name>
+	</security-role>
+	<security-role>
+		<role-name>createAndEditRequest</role-name>
+	</security-role>
+	<security-role>
+		<role-name>Hp_View</role-name>
+	</security-role>
+	<security-role>
+		<description>
+		Create and Edit Work Items</description>
+		<role-name>createAndEditWorkItem</role-name>
+	</security-role>
+	
+	
+	<!--  Error pages -->
+	<error-page>
+		<exception-type>javax.faces.FacesException</exception-type>
+		<location>/pages/common/error.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/pages/common/error.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/pages/common/error.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.io.FileNotFoundException</exception-type>
+		<location>/pages/common/error.jsp</location>
+	</error-page>
+	<resource-ref>
+		<description>
+		</description>
+		<res-ref-name>jms/qcf</res-ref-name>
+		<res-type>javax.jms.QueueConnectionFactory</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref>
+		<description>
+		</description>
+		<res-ref-name>jms/qALG</res-ref-name>
+		<res-type>javax.jms.Queue</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref>
+		<description>
+		</description>
+		<res-ref-name>jms/qCCTAUDIT</res-ref-name>
+		<res-type>javax.jms.Queue</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref>
+		<description>
+		</description>
+		<res-ref-name>jms/qCCTMASSUPDATE</res-ref-name>
+		<res-type>javax.jms.Queue</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+
+	
+	<filter-mapping>
+		<filter-name>RequestLoggingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+</web-app>

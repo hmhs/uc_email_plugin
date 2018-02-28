@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0" id="WebApp_1436188580380">
+ <display-name>rbsmbl</display-name>
+ <filter>
+  <filter-name>RestServiceFilter</filter-name>
+  <filter-class>com.highmark.rbssvc.filter.RestServiceFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>RestServiceFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter>
+   <filter-name>ServiceTimeLogging</filter-name>
+   <filter-class>com.highmark.rbssvc.filter.ServiceTimingFilter</filter-class>
+ </filter>
+ <filter-mapping>
+   <filter-name>ServiceTimeLogging</filter-name>
+   <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter>
+  <filter-name>DifferentiatorFilter</filter-name>
+  <filter-class>com.highmark.rbssvc.filter.DifferentiatorFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>DifferentiatorFilter</filter-name>
+  <url-pattern>/*</url-pattern>
+ </filter-mapping>
+ <filter>
+  <filter-name>CoreInternalFilter</filter-name>
+  <filter-class>com.highmark.ems.core.service.filter.CoreInternalFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>CoreInternalFilter</filter-name>
+  <url-pattern>/int-services/*</url-pattern>
+ </filter-mapping>
+ <filter>
+  <filter-name>CORSFilter</filter-name>
+  <filter-class>com.highmark.ems.core.service.filter.CORSFilter</filter-class>
+ </filter>
+  <filter-mapping>
+  <filter-name>CORSFilter</filter-name>
+  <url-pattern>/x-services/*</url-pattern>
+ </filter-mapping>  
+   
+ 
+<!-- replace Wink Servlet with IBM Rest Servlet -->
+<!-- can't get this to work yet!! -->
+<!-- <servlet> -->
+<!--   <servlet-name>IBM Rest Servlet</servlet-name> -->
+<!--   <servlet-class>com.ibm.websphere.jaxrs.server.IBMRestServlet</servlet-class> -->
+<!--     <init-param> -->
+<!--       <param-name>applicationConfigLocation</param-name> -->
+<!--       <param-value>/WEB-INF/application</param-value> -->
+<!--     </init-param> -->
+<!-- </servlet> -->
+ 
+ <!-- Test REST admin servlet -->
+<!-- <servlet>
+  <servlet-name>restSdkAdmin</servlet-name>
+  <servlet-class>org.apache.wink.server.internal.servlet.AdminServlet</servlet-class>
+ </servlet>
+-->
+ 
+ <!-- REST servlet that dispatches to the App (resource class). Remove Init params entry containing application file -->  
+  <servlet>
+    <servlet-name>Wink Servlet</servlet-name>
+    <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+    <init-param>
+        <param-name>javax.ws.rs.Application</param-name>
+        <param-value>com.highmark.rbssvc.resources.RbsmblApplication</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+  	<servlet-name>Rbsmbl Internal</servlet-name>
+	<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+	<init-param>
+		<param-name>javax.ws.rs.Application</param-name>
+		<param-value>com.highmark.rbssvc.resources.RbsmblInternalApplication</param-value>
+	</init-param>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>Rbsmbl Admin</servlet-name>
+	<servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+	<init-param>
+		<param-name>javax.ws.rs.Application</param-name>
+		<param-value>com.highmark.rbssvc.resources.RbsmblAdminApplication</param-value>
+	</init-param>
+  </servlet>
+  
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:META-INF/server/wink-core-context.xml
+      /WEB-INF/spring/applicationContext-configuration.xml</param-value>
+   </context-param>
+
+  <!--  comment this out if you want to run in Tomcat.  you need to set the spring.profiles.active  -->
+  <context-param>
+    <param-name>spring.profiles.active</param-name>
+    <param-value>WAS</param-value>
+  </context-param>
+
+<listener>
+<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+<listener>
+<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+</listener>
+
+
+ <!-- Here are the entries that are added for log4j admin Implementation -->
+ <servlet>
+  <display-name>Log4jCustomAdmin</display-name>
+  <servlet-name>Log4jCustomAdminServlet</servlet-name>
+  <servlet-class>com.highmark.ems.core.common.logger.Log4jCustomConfigurationServlet</servlet-class>
+ </servlet>
+ 
+ <servlet>
+	<display-name>Log4jCustomAdminstrator</display-name>
+	<servlet-name>Log4jCustomAdminstratorServlet</servlet-name>
+	<servlet-class>com.highmark.ems.core.common.logger.Log4jCustomConfigurationServlet</servlet-class>
+ </servlet>
+
+<!-- <servlet-mapping>
+  <servlet-name>restSdkAdmin</servlet-name>
+  <url-pattern>/admin</url-pattern>
+ </servlet-mapping> -->
+ <servlet-mapping>
+  <servlet-name>Wink Servlet</servlet-name>
+  <url-pattern>/x-services/*</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+  <servlet-name>Rbsmbl Internal</servlet-name>
+  <url-pattern>/int-services/core/*</url-pattern>
+ </servlet-mapping>  
+ <servlet-mapping>
+  <servlet-name>Rbsmbl Admin</servlet-name>
+  <url-pattern>/admin/*</url-pattern>
+ </servlet-mapping>  
+ <!-- Here are the entries that are added for log4j admin Implementation-->
+ <servlet-mapping>
+  <servlet-name>Log4jCustomAdminServlet</servlet-name>
+  <url-pattern>/Log4jAdmin</url-pattern>
+ </servlet-mapping>
+ <servlet-mapping>
+	<servlet-name>Log4jCustomAdminstratorServlet</servlet-name>
+	<url-pattern>/secure/Log4jAdmin</url-pattern>
+ </servlet-mapping>
+    
+ <!-- Profile Enabling Servlet for turning on and off method profiling on the fly. -->
+ <!-- 
+ <servlet>
+	<servlet-name>
+		ProfileEnabler
+	</servlet-name>
+	<display-name>
+		ProfileEnabler
+	</display-name>
+	<description></description>
+	<servlet-class>
+		com.highmark.rbssvc.profiling.ProfileEnabler
+	</servlet-class>
+</servlet>
+    <servlet-mapping>
+    	<servlet-name>
+    		ProfileEnabler
+    	</servlet-name>
+    	<url-pattern>
+    		/enableProfiling
+    	</url-pattern>
+    </servlet-mapping>
+-->
+<!-- This has been disabled as it is causing critical defects within the MHS and SPA projects for IBC members, potentially causing issues 
+     within other projects. DO NOT RE-ENABLE TILL FULL CROSS-DD TESTING HAS BEEN COMPLETED AND PERFORMED AND BRYAN NELSON AND MATTHEW CHARLTON
+     HAVE BOTH REVIEWED THE CHANGE.
+  <servlet>
+ 	<servlet-name>mhsTestServlet</servlet-name>
+ 	<servlet-class>com.highmark.rbssvc.web.TestDataServlet</servlet-class> 
+ </servlet>
+ <servlet-mapping>
+	<servlet-name>mhsTestServlet</servlet-name>
+	<url-pattern>/x-services/test/mhsTestServices</url-pattern>
+ </servlet-mapping>
+ <filter>
+  <filter-name>TestDataFilter</filter-name>
+  <filter-class>com.highmark.rbssvc.web.TestDataFilter</filter-class>
+ </filter>
+ <filter-mapping>
+  <filter-name>TestDataFilter</filter-name>
+  <url-pattern>/x-services/*</url-pattern>
+ </filter-mapping>
+-->
+ 
+ 
+ <welcome-file-list>
+  <welcome-file>index.jsp</welcome-file>
+ </welcome-file-list>
+ 
+<!--  Health check does not need to have the extra security on it so we need to 'exclude' it and give all access 
+
+	  The 2 idcard urls are opened temporarily and should be removed for October 2014.  These were opened so the business
+	  team(s) can generate cards via the secure.highmark.com while Enterprise Service generate a utility or process for those
+	  teams to properly call the services using the app id.
+-->
+ <security-constraint>
+   <display-name>All Access</display-name>
+   <web-resource-collection>
+     <web-resource-name>All Access</web-resource-name>     
+     <url-pattern>/x-services/asp/idcard</url-pattern>
+     <url-pattern>/x-services/healthcheck</url-pattern>
+     <url-pattern>/x-services/idcard/getidcard</url-pattern>
+     <url-pattern>/x-services/user/authenticateFailure</url-pattern>
+     <http-method>GET</http-method>
+     <http-method>POST</http-method>
+   </web-resource-collection>
+</security-constraint>  
+ <!-- Adding extra security on services, if you need to access a service with an 
+ internal call (secure.highmark.com), make sure your call adds the appid 
+ and that is added to the proper group [MBR Services-INT]. Those routing through
+ DataPower should not be affected since DataPower applies the appid for us. --> 
+ <security-constraint>
+		<display-name>baseUser</display-name>
+		<web-resource-collection>
+			<web-resource-name>allResources</web-resource-name>
+			<url-pattern>/x-services/*</url-pattern>			
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Base Users</description>
+			<role-name>baseUser</role-name>
+		</auth-constraint>
+ </security-constraint>
+
+<!-- Adding extra security on log4j administrator tool, if you need to access to edit a log level, request access to 
+[ebusiness-log4j-admin]--> 	
+	<security-constraint>
+		<display-name>log4jAdmin</display-name>
+		<web-resource-collection>
+			<web-resource-name>log4jResources</web-resource-name>
+			<url-pattern>/secure/Log4jAdmin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>Log4j Users</description>
+			<role-name>log4jAdmin</role-name>
+		</auth-constraint>
+	</security-constraint>
+	
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	<security-role>
+		<role-name>baseUser</role-name>
+	</security-role>
+	<env-entry>
+		<env-entry-name>isJeeSecurityEnabled</env-entry-name>
+		<env-entry-type>java.lang.Boolean</env-entry-type>
+		<env-entry-value>true</env-entry-value>
+	</env-entry>
+	<env-entry>
+		<env-entry-name>userType</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>com.highmark.base.security.jee.ExtendedUser</env-entry-value>
+	</env-entry>
+
+</web-app>

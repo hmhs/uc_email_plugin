@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  id="Application_ID"
+  version="1.4"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/application_1_4.xsd">
+  <display-name>oplopi</display-name>
+  <icon />
+  <module id="myeclipse.1311873163702">
+    <web>
+      <web-uri>oplopiWeb.war</web-uri>
+      <context-root>/oplopi</context-root>
+    </web>
+  </module>
+  <module id="myeclipse.1311873163405">
+    <ejb>oplopiEJB.jar</ejb>
+  </module>
+  <security-role id="SecurityRole_1300387527261">
+    <description>Supervisor</description>
+    <role-name>SU</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1300387527277">
+    <description>Reviewer</description>
+    <role-name>RV</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1300387527278">
+    <description>Clerk</description>
+    <role-name>CK</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1300387527279">
+    <description>Employee Data</description>
+    <role-name>EM</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1300387527295">
+    <description>View All</description>
+    <role-name>VA</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1305303014570">
+    <description>Senior Market View</description>
+    <role-name>SV</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1305303014571">
+    <description>Senior Market Edit</description>
+    <role-name>SE</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1301326558701">
+    <description>Code Table Admin</description>
+    <role-name>CT</role-name>
+  </security-role>
+   <security-role id="SecurityRole_1301504941483">
+    <role-name>SB</role-name>
+  </security-role>
+   <security-role id="SecurityRole_1302553317067">
+    <role-name>anyone</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1305303014569">
+    <description>All Authenticated Users</description>
+    <role-name>AllAuthenticatedUsers</role-name>
+  </security-role>
+  <security-role id="SecurityRole_1305468023821">
+    <description>TEST LDAP</description>
+    <role-name>VIEW-SENSITIVE-DATA-INT</role-name>
+  </security-role>
+</application>
+
+

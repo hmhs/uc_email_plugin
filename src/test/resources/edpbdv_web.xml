@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>EDPBDVWeb</display-name>
+	<servlet>
+	    <display-name>HomeServlet</display-name>
+		<servlet-name>HomeServlet</servlet-name>
+		
+		<servlet-class>
+		com.highmark.edpbdv.servlets.HomeServlet</servlet-class>
+	</servlet>
+	<servlet>
+	<display-name>Log4JConfigServlet</display-name>
+		<servlet-name>Log4JConfigServlet</servlet-name>
+		
+		
+		<servlet-class>
+		org.apache.log4j.servlet.ConfigurationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>HomeServlet</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Log4JConfigServlet</servlet-name>
+		<url-pattern>log4j</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	<resource-ref id="ResourceRef_1188934891678">
+		<description></description>
+		<res-ref-name>jms/MyConnectionFactoryRef</res-ref-name>
+		<res-type>javax.jms.QueueConnectionFactory</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1188934925269">
+		<description></description>
+		<res-ref-name>jms/BLUEDEVL_REQ</res-ref-name>
+		<res-type>javax.jms.Queue</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+	<resource-ref id="ResourceRef_1188934953672">
+		<description></description>
+		<res-ref-name>jms/BLUEDEVL_REP</res-ref-name>
+		<res-type>javax.jms.Queue</res-type>
+		<res-auth>Application</res-auth>
+		<res-sharing-scope>Shareable</res-sharing-scope>
+	</resource-ref>
+</web-app>

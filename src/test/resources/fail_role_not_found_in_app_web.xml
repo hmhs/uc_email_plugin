@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+        <display-name>emdsvc</display-name>
+
+<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/applicationContext.xml /WEB-INF/pubsubContext.xml /WEB-INF/memberMaintainAppContext.xml /WEB-INF/salesforceMergeRequestAppContext.xml /WEB-INF/salesforceAddUpdateRequestAppContext.xml /WEB-INF/salesforceRetailAddUpdateAppContext.xml</param-value>
+</context-param>
+
+
+        <filter>
+                <display-name>MDCFilter</display-name>
+                <filter-name>MDCFilter</filter-name>
+                <filter-class>com.highmark.emdsvc.filter.MDCFilter</filter-class>
+        </filter>
+        <filter-mapping>
+                <filter-name>MDCFilter</filter-name>
+                <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+        <listener>
+                <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+        </listener>
+
+        <welcome-file-list>
+                <welcome-file>index.html</welcome-file>
+        </welcome-file-list>
+
+        <!-- Log4J Config servlet -->
+        <servlet>
+                <description>
+                </description>
+                <display-name>Log4jConfigurationServlet</display-name>
+                <servlet-name>Log4jConfigurationServlet</servlet-name>
+                <servlet-class>org.apache.log4j.servlet.ConfigurationServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>Log4jConfigurationServlet</servlet-name>
+                <url-pattern>/Log4jConfigurationServlet</url-pattern>
+        </servlet-mapping>
+
+        <!-- REST admin servlet -->
+        <servlet>
+                <servlet-name>restSdkAdmin</servlet-name>
+                <servlet-class>org.apache.wink.server.internal.servlet.AdminServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>restSdkAdmin</servlet-name>
+                <url-pattern>/admin</url-pattern>
+        </servlet-mapping>
+
+        <!-- REST servlet that dispatches to the App (resource class) -->
+        <servlet>
+                <servlet-name>Wink Servlet</servlet-name>
+                <servlet-class>org.apache.wink.server.internal.servlet.RestServlet</servlet-class>
+                <init-param>
+                        <param-name>javax.ws.rs.Application</param-name>
+                        <!-- Must change following to the Java "REST resource" class to which http operations on uri's will be dispatched. -->
+                        <param-value>com.highmark.emdsvc.resources.App</param-value>
+                </init-param>
+        </servlet>
+        <servlet-mapping>
+                <servlet-name>Wink Servlet</servlet-name>
+                <url-pattern>/*</url-pattern>
+        </servlet-mapping>
+
+        <security-constraint>
+                <display-name>CMR ViewOnly Services</display-name>
+                <web-resource-collection>
+                        <web-resource-name>Consumer Resource</web-resource-name>
+                        <url-pattern>/consumer/*</url-pattern>
+                        <http-method>GET</http-method>
+                </web-resource-collection>
+                <web-resource-collection>
+                        <web-resource-name>Consumer Resource</web-resource-name>
+                        <url-pattern>/consumer/searchConsumerID/*</url-pattern>
+                        <http-method>POST</http-method>
+                </web-resource-collection>
+                <web-resource-collection>
+                        <web-resource-name>Member Resource</web-resource-name>
+                        <url-pattern>/member/searchMember/*</url-pattern>
+                        <http-method>POST</http-method>
+                </web-resource-collection>
+                <auth-constraint>
+                        <description>Search or Viewer role needed</description>
+                        <role-name>viewerRole</role-name>
+                        <role-name>maintainerRole</role-name>
+                </auth-constraint>
+
+        </security-constraint>
+        <security-constraint>
+                <display-name>CMR Modify Services</display-name>
+                <web-resource-collection>
+                        <web-resource-name>Member Resource</web-resource-name>
+                        <url-pattern>/member/*</url-pattern>
+                        <http-method>PUT</http-method>
+                </web-resource-collection>
+                <web-resource-collection>
+                        <web-resource-name>Member Resource</web-resource-name>
+                        <url-pattern>/member/splitMember/*</url-pattern>
+                        <http-method>PUT</http-method>
+                </web-resource-collection>
+                <auth-constraint>
+                        <description>Maintainer role is needed</description>
+                        <role-name>viewerRole</role-name>
+                </auth-constraint>
+        </security-constraint>
+
+        <security-constraint>
+                <display-name>Retail Modify Services</display-name>
+                <web-resource-collection>
+                        <web-resource-name>Retail AddUpdate</web-resource-name>
+                        <url-pattern>/RP/member/addUpdate/*</url-pattern>
+                        <http-method>PUT</http-method>
+                </web-resource-collection>
+                <web-resource-collection>
+                        <web-resource-name>Retail Inactivate</web-resource-name>
+                        <url-pattern>/RP/member/inactivate/*</url-pattern>
+                        <http-method>DELETE</http-method>
+                </web-resource-collection>
+                <auth-constraint>
+                        <description>Maintainer role is needed</description>
+                        <role-name>noRole</role-name>
+                </auth-constraint>
+        </security-constraint>
+        <security-constraint>
+                <display-name>Retail ViewOnly Services</display-name>
+                <web-resource-collection>
+                        <web-resource-name>Retail Retrieve</web-resource-name>
+                        <url-pattern>/RP/member/retrieve/*</url-pattern>
+                        <http-method>GET</http-method>
+                </web-resource-collection>
+                <web-resource-collection>
+                        <web-resource-name>Retail Search</web-resource-name>
+                        <url-pattern>/RP/member/search/*</url-pattern>
+                        <http-method>POST</http-method>
+                </web-resource-collection>
+                <auth-constraint>
+                        <description>Search or Viewer role needed</description>
+                        <role-name>viewerRole</role-name>
+                        <role-name>maintainerRole</role-name>
+                </auth-constraint>
+        </security-constraint>
+
+
+</web-app>

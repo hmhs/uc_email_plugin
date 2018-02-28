@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applicationbnd:ApplicationBinding xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:applicationbnd="applicationbnd.xmi" xmi:id="ApplicationBinding_1272028158008">
+  <authorizationTable xmi:id="AuthorizationTable_1300287245353">
+    <authorizations xmi:id="RoleAssignment_1300387527261">
+      <role href="META-INF/application.xml#SecurityRole_1300387527261"/>
+      <groups xmi:id="Group_1305303014569" name="OPL-HMSU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387527277">
+      <role href="META-INF/application.xml#SecurityRole_1300387527277"/>
+      <groups xmi:id="Group_1305303014570" name="OPL-HMRV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387527278">
+      <role href="META-INF/application.xml#SecurityRole_1300387527278"/>
+      <groups xmi:id="Group_1305303014571" name="OPL-HMCK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387527279">
+      <role href="META-INF/application.xml#SecurityRole_1300387527279"/>
+      <groups xmi:id="Group_1305303014572" name="OPL-HMEM-INT"/>
+    </authorizations>    
+    <authorizations xmi:id="RoleAssignment_1305303014571">
+      <role href="META-INF/application.xml#SecurityRole_1305303014571"/>
+      <groups xmi:id="Group_1305303014573" name="OPL-HMSE-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305303014570">
+      <role href="META-INF/application.xml#SecurityRole_1305303014570"/>
+      <groups xmi:id="Group_1305303014574" name="OPL-HMSV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387527295">
+      <role href="META-INF/application.xml#SecurityRole_1300387527295"/>
+      <groups xmi:id="Group_1305303014575" name="OPL-HMVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301326558701">
+      <role href="META-INF/application.xml#SecurityRole_1301326558701"/>
+      <groups xmi:id="Group_1305303014576" name="OPL-ADCT-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301328520642">
+      <role href="META-INF/application.xml#SecurityRole_1301328520642"/>
+      <groups xmi:id="Group_1305303014577" name="OPL-WVSU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301328520657">
+      <role href="META-INF/application.xml#SecurityRole_1301328520657"/>
+      <groups xmi:id="Group_1305303014578" name="OPL-WVVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941435">
+      <role href="META-INF/application.xml#SecurityRole_1301504941435"/>
+      <groups xmi:id="Group_1305303014579" name="OPL-WVRV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941466">
+      <role href="META-INF/application.xml#SecurityRole_1301504941466"/>
+      <groups xmi:id="Group_1305303014580" name="OPL-WVCK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941482">
+      <role href="META-INF/application.xml#SecurityRole_1301504941482"/>
+      <groups xmi:id="Group_1305303014581" name="OPL-WVEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941483">
+      <role href="META-INF/application.xml#SecurityRole_1301504941483"/>
+      <groups xmi:id="Group_1305303014582" name="OPL-WVSB-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941484">
+      <role href="META-INF/application.xml#SecurityRole_1301504941497"/>
+      <groups xmi:id="Group_1305303014583" name="OPL-WVFP-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941497">
+      <role href="META-INF/application.xml#SecurityRole_1301504941498"/>
+      <groups xmi:id="Group_1305303014584" name="OPL-NESU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941498">
+      <role href="META-INF/application.xml#SecurityRole_1301504941499"/>
+      <groups xmi:id="Group_1305303014585" name="OPL-NEVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941513">
+      <role href="META-INF/application.xml#SecurityRole_1301504941513"/>
+      <groups xmi:id="Group_1305303014586" name="OPL-NECK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941514">
+      <role href="META-INF/application.xml#SecurityRole_1301504941514"/>
+      <groups xmi:id="Group_1305303014587" name="OPL-NERV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301504941515">
+      <role href="META-INF/application.xml#SecurityRole_1301504941515"/>
+      <groups xmi:id="Group_1305303014588" name="OPL-NEEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606135">
+      <role href="META-INF/application.xml#SecurityRole_1301505606135"/>
+      <groups xmi:id="Group_1305303014589" name="OPL-01SU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606136">
+      <role href="META-INF/application.xml#SecurityRole_1301505606136"/>
+      <groups xmi:id="Group_1305303014590" name="OPL-01RV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606150">
+      <role href="META-INF/application.xml#SecurityRole_1301505606150"/>
+      <groups xmi:id="Group_1305303014591" name="OPL-01CK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606151">
+      <role href="META-INF/application.xml#SecurityRole_1301505606151"/>
+      <groups xmi:id="Group_1305303014592" name="OPL-01EM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606152">
+      <role href="META-INF/application.xml#SecurityRole_1301505606152"/>
+      <groups xmi:id="Group_1305303014593" name="OPL-01VA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606166">
+      <role href="META-INF/application.xml#SecurityRole_1301505606166"/>
+      <groups xmi:id="Group_1305303014594" name="OPL-CFSU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606167">
+      <role href="META-INF/application.xml#SecurityRole_1301505606167"/>
+      <groups xmi:id="Group_1305303014595" name="OPL-CFRV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606168">
+      <role href="META-INF/application.xml#SecurityRole_1301505606168"/>
+      <groups xmi:id="Group_1305303014596" name="OPL-CFCK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606181">
+      <role href="META-INF/application.xml#SecurityRole_1301505606181"/>
+      <groups xmi:id="Group_1305303014597" name="OPL-CFEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1301505606182">
+      <role href="META-INF/application.xml#SecurityRole_1301505606182"/>
+      <groups xmi:id="Group_1305303014598" name="OPL-CFVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387541478">
+      <role href="META-INF/application.xml#SecurityRole_1300387541478"/>
+      <groups xmi:id="Group_1305303014599" name="OPL-DESU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387543157">
+      <role href="META-INF/application.xml#SecurityRole_1300387543157"/>
+      <groups xmi:id="Group_1305303014600" name="OPL-DERV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387595478">
+      <role href="META-INF/application.xml#SecurityRole_1300387595478"/>
+      <groups xmi:id="Group_1305303014601" name="OPL-DECK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387544997">
+      <role href="META-INF/application.xml#SecurityRole_1300387544997"/>
+      <groups xmi:id="Group_1305303014602" name="OPL-DEEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387533668">
+      <role href="META-INF/application.xml#SecurityRole_1300387533668"/>
+      <groups xmi:id="Group_1305303014603" name="OPL-DEVA-INT"/>
+    </authorizations>
+      <authorizations xmi:id="RoleAssignment_1300387527293">
+      <role href="META-INF/application.xml#SecurityRole_1300387527293"/>
+      <groups xmi:id="Group_1305303014602" name="OPL-DENE-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300387527294">
+      <role href="META-INF/application.xml#SecurityRole_1300387527294"/>
+      <groups xmi:id="Group_1305303014603" name="OPL-DENV-INT"/>
+    </authorizations>
+    
+    <authorizations xmi:id="RoleAssignment_1300509749417">
+      <role href="META-INF/application.xml#SecurityRole_1300509749417"/>
+      <groups xmi:id="Group_1305303014604" name="OPL-IWSU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749418">
+      <role href="META-INF/application.xml#SecurityRole_1300509749418"/>
+      <groups xmi:id="Group_1305303014605" name="OPL-IWRV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749419">
+      <role href="META-INF/application.xml#SecurityRole_1300509749419"/>
+      <groups xmi:id="Group_1305303014606" name="OPL-IWCK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749420">
+      <role href="META-INF/application.xml#SecurityRole_1300509749420"/>
+      <groups xmi:id="Group_1305303014607" name="OPL-IWEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749421">
+      <role href="META-INF/application.xml#SecurityRole_1300509749421"/>
+      <groups xmi:id="Group_1305303014608" name="OPL-IWVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749412">
+      <role href="META-INF/application.xml#SecurityRole_1300509749412"/>
+      <groups xmi:id="Group_1305303014609" name="OPL-IJSU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749413">
+      <role href="META-INF/application.xml#SecurityRole_1300509749413"/>
+      <groups xmi:id="Group_1305303014610" name="OPL-IJRV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749414">
+      <role href="META-INF/application.xml#SecurityRole_1300509749414"/>
+      <groups xmi:id="Group_1305303014611" name="OPL-IJCK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749415">
+      <role href="META-INF/application.xml#SecurityRole_1300509749415"/>
+      <groups xmi:id="Group_1305303014612" name="OPL-IJEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749416">
+      <role href="META-INF/application.xml#SecurityRole_1300509749416"/>
+      <groups xmi:id="Group_1305303014613" name="OPL-IJVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749417">
+      <role href="META-INF/application.xml#SecurityRole_1300509749417"/>
+      <groups xmi:id="Group_1305303014614" name="OPL-MNSU-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749418">
+      <role href="META-INF/application.xml#SecurityRole_1300509749418"/>
+      <groups xmi:id="Group_1305303014614" name="OPL-MNRV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749419">
+      <role href="META-INF/application.xml#SecurityRole_1300509749419"/>
+      <groups xmi:id="Group_1305303014615" name="OPL-MNCK-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749420">
+      <role href="META-INF/application.xml#SecurityRole_1300509749420"/>
+      <groups xmi:id="Group_1305303014616" name="OPL-MNVA-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749421">
+      <role href="META-INF/application.xml#SecurityRole_1300509749421"/>
+      <groups xmi:id="Group_1305303014617" name="OPL-MNEM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749422">
+      <role href="META-INF/application.xml#SecurityRole_1300509749422"/>
+      <groups xmi:id="Group_1305303014618" name="OPL-MNSV-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1300509749423">
+      <role href="META-INF/application.xml#SecurityRole_1300509749423"/>
+      <groups xmi:id="Group_1305303014619" name="OPL-MNSE-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023823">
+      <role href="META-INF/application.xml#SecurityRole_1305468023823"/>
+      <groups xmi:id="Group_1305303014620" name="OPL-MNST-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023822">
+      <role href="META-INF/application.xml#SecurityRole_1305468023822"/>
+      <groups xmi:id="Group_1305303014621" name="OPL-MNSI-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023825">
+      <role href="META-INF/application.xml#SecurityRole_1305468023825"/>
+      <groups xmi:id="Group_1305303014621" name="OPL-MNFX-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023824">
+      <role href="META-INF/application.xml#SecurityRole_1305468023824"/>
+      <groups xmi:id="Group_1305303014622" name="OPL-MNFI-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023827">
+      <role href="META-INF/application.xml#SecurityRole_1305468023827"/>
+      <groups xmi:id="Group_1305303014623" name="OPL-MNFC-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023826">
+      <role href="META-INF/application.xml#SecurityRole_1305468023826"/>
+      <groups xmi:id="Group_1305303014624" name="OPL-MNCI-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023829">
+      <role href="META-INF/application.xml#SecurityRole_1305468023829"/>
+      <groups xmi:id="Group_1305303014625" name="OPL-MNEW-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023828">
+      <role href="META-INF/application.xml#SecurityRole_1305468023828"/>
+      <groups xmi:id="Group_1305303014626" name="OPL-MNEI-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023831">
+      <role href="META-INF/application.xml#SecurityRole_1305468023831"/>
+      <groups xmi:id="Group_1305303014627" name="OPL-MNRC-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023833">
+      <role href="META-INF/application.xml#SecurityRole_1305468023833"/>
+      <groups xmi:id="Group_1305303014628" name="OPL-MNWM-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023832">
+      <role href="META-INF/application.xml#SecurityRole_1305468023832"/>
+      <groups xmi:id="Group_1305303014629" name="OPL-MNWI-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023830">
+      <role href="META-INF/application.xml#SecurityRole_1305468023830"/>
+      <groups xmi:id="Group_1305303014628" name="OPL-MNRI-INT"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1303148631297">
+      <specialSubjects xmi:type="applicationbnd:Everyone" xmi:id="Everyone_1303148631297" name="Everyone"/>
+      <role href="META-INF/application.xml#SecurityRole_1302553317067"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305303014569">
+      <specialSubjects xmi:type="applicationbnd:AllAuthenticatedUsers" xmi:id="AllAuthenticatedUsers_1305303014569" name="AllAuthenticatedUsers"/>
+      <role href="META-INF/application.xml#SecurityRole_1305303014569"/>
+    </authorizations>
+    <authorizations xmi:id="RoleAssignment_1305468023821">
+      <role href="META-INF/application.xml#SecurityRole_1305468023821"/>
+      <groups xmi:id="Group_1305468023821" name="VIEW-SENSITIVE-DATA-INT"/>
+    </authorizations>
+  </authorizationTable>
+  <application href="META-INF/application.xml#Application_ID"/>
+</applicationbnd:ApplicationBinding>
