@@ -23,5 +23,8 @@
     <release-note plugin-version="2">
       Fixed select box on the plugin for by app/comp
     </release-note>
+    <release-note plugin-version="4">
+      Changed UC Build section to use new API for obtaining team information
+    </release-note>
   </release-notes>
 </pluginInfo>

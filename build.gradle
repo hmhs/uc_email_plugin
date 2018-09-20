@@ -4,7 +4,7 @@ apply plugin: 'groovy'
 
 defaultTasks 'distPlugin'
 
-def apiVersion="3"
+def apiVersion="5"
 def pluginName="uc_email_plugin"
 def pluginVersion="dev"
 def buildLocaleDir = 'build/locale'

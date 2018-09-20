@@ -168,6 +168,53 @@ class EmailTeam {
     }
 
     /**
+     * Method to obtain list of email addresses for a team
+     * @param team - Team ID from UC Build
+     * @param roles - List of Role names as it appears in UC Build (optional)
+     * @return List of string objects which are the unique email addresses found
+     */
+    List<String> getUCBEmailListForTeam(String team, List<String> roles = ["all"]) {
+        // Set URL for obtaining team information from UC Build
+        String addUrl = "/rest2/team/" + java.net.URLEncoder.encode(team,"UTF-8")
+        List<String> returnList = []
+
+        // Get the team info from UC Build
+        def teamInfo = performGetRequest(this.ucClient,this.baseUrl + addUrl)
+
+        // If no information found for the team, return an empty list
+        if(teamInfo == null && teamInfo.size() != 0) {
+            return returnList
+        }
+
+        // Look at each role mapping
+        teamInfo.roleMappings.each() { mapping ->
+            // Look in the roles specified and if the mapping has it, add the user emails to the list
+            // If roles was not specified, add email address for all roles to the list
+            if(roles.find {mapping.role.name == it} || roles == ["all"]) {
+                // Add individual user email address in the roles to the list
+                if(mapping.user != null && mapping.user.email != null && mapping.user.email != "") {
+                    returnList.add(mapping.user.email)
+                }
+                // If using a group, look into the group and add each email address for the group to the list
+                if(mapping.group != null && mapping.group != "") {
+                    // Get group details for the group found
+                    String groupUrl = "/rest2/group/" + java.net.URLEncoder
+                        .encode(mapping.group.id,"UTF-8") + "/members"
+                    def groupInfo = performGetRequest(this.ucClient,this.baseUrl + groupUrl)
+                    groupInfo.each() { group ->
+                        if(group.email != "") {
+                            returnList.add(group.email)
+                        }
+                    }
+                }
+            }
+        }
+
+        // Return a unique list of email address
+        return returnList.unique()
+    }
+
+    /**
      * Method to obtain a list of email addresses by application name
      * @param app - Application Name
      * @param roles - List of Role names as it appears in UC Deploy (optional)
@@ -207,13 +254,46 @@ class EmailTeam {
         List<String> emails = []
 
          // Get the team information for the component
-         compInfo.extendedSecurity.teams.each() { it -> teams.add(it.teamLabel) }
+         compInfo.extendedSecurity.teams.each() { it ->
+                 teams.add(it.teamLabel)
+         }
         for(team in teams) {
             // obtain the list of email address for each team/role
             emails.addAll(getEmailListForTeam(team,roles))
         }
 
          // Return the list of emails
+        return emails
+    }
+
+    /**
+     * Method to obtain a list of email addresses from UC Build
+     * @param projectId - UC Build Project ID
+     * @param processId - UC Build Process ID
+     * @param roles - List of roles as they appear in UC Build (optional)
+     * @return List of strings which contain email addresses
+     */
+    List<String> getEmailFromUcBuild(String projectId, String processId,
+                                     List<String> roles = ["all"]) {
+        // Get component information from UC Deploy
+        String addUrl = "/rest2/projects/${projectId}/processes/${processId}"
+        def compInfo = performGetRequest(this.ucClient, this.baseUrl + addUrl)
+
+        List<String> teams = []
+        List<String> emails = []
+
+        // Get the team information for the component
+        compInfo.securityResource.teams.each() { it ->
+            if (it.name != "System Team") {
+                teams.add(it.id)
+            }
+        }
+        for(team in teams) {
+            // obtain the list of email address for each team/role
+            emails.addAll(getUCBEmailListForTeam(team, roles))
+        }
+
+        // Return the list of emails
         return emails
     }
 
@@ -279,6 +359,74 @@ class EmailTeam {
                             return new PasswordAuthentication(username, mailPassword)
                         }
                     })
+        } else {
+            lSession = Session.getDefaultInstance(mprops, null)
+        }
+
+        try {
+            MimeMessage msg = new MimeMessage(lSession)
+
+            // populate the to, from, subject, and text of the message
+            InternetAddress[] to = new InternetAddress[emails.size()]
+            to = (InternetAddress[]) emailTos.toArray(to)
+            msg.setRecipients(MimeMessage.RecipientType.TO, to)
+            msg.setFrom(new InternetAddress(fromAddress))
+            msg.setSubject(subject)
+            if(attachment != "" && attachment != null) {
+                BodyPart messageBodyPart = new MimeBodyPart()
+                messageBodyPart.setContent(message,"text/html")
+                Multipart multipart = new MimeMultipart()
+                multipart.addBodyPart(messageBodyPart)
+
+                messageBodyPart = new MimeBodyPart()
+                messageBodyPart.attachFile(attachment)
+                multipart.addBodyPart(messageBodyPart)
+                // Send the complete message parts
+                msg.setContent(multipart)
+            } else {
+                msg.setText(message)
+            }
+
+            // send the message
+            Transport.send(msg)
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e)
+        }
+        println "Email(s) sent!"
+    }
+
+    /**
+     * Method to send email using the UC Deploy configuration
+     * @param emails - List of email addresses
+     * @param subject - Subject to be added to the message
+     * @param message - Message body
+     * @param attachment - Location of the attachment to add (optional)
+     */
+    void sendSMTPEmail (List<String> emails, String subject, String message, String attachment,
+                        String host, String port, boolean secure, String fromAddress,
+                        String username = null, String mailPassword = null) {
+
+        ArrayList emailTos = new ArrayList()
+
+        emails.each() { email ->
+            emailTos.add(new InternetAddress(email.toString()))
+        }
+
+        // create a new mail session and message
+        Properties mprops = new Properties()
+        mprops.put("mail.smtp.host", host)
+        mprops.put("mail.smtp.port", port)
+        mprops.put("mail.smtp.starttls.enable", secure)
+        Session lSession
+        if (username && mailPassword) {
+            mprops.put("mail.smtp.auth", "true")
+            lSession = Session.getInstance(mprops,
+                new javax.mail.Authenticator() {
+                    protected PasswordAuthentication getPasswordAuthentication() {
+                        return new PasswordAuthentication(username, mailPassword)
+                    }
+                })
         } else {
             lSession = Session.getDefaultInstance(mprops, null)
         }

@@ -10,4 +10,35 @@
       </remove-properties>
     </migrate-command>
   </migrate>
+  <migrate to-version="4">
+    <migrate-command name="Send Email to Team">
+      <migrate-properties>
+        <migrate-property name="processId" default="${p:process.id}"/>
+        <migrate-property name="projectId" default="${p:project.id}"/>
+        <migrate-property name="msHost" default="mailhub.highmark.com"/>
+        <migrate-property name="msPort" default="25"/>
+        <migrate-property name="msSecure" default="false"/>
+        <migrate-property name="msFrom" default="ucbuild@highmark.com"/>
+        <migrate-property name="msUser" />
+        <migrate-property name="msPass" />
+        <migrate-property name="getTeamBy" />
+      </migrate-properties>
+      <remove-properties>
+        <remove-property name="appCompName"/>
+        <!--<remove-property name="getTeamBy"/>-->
+      </remove-properties>
+    </migrate-command>
+  </migrate>
+  <migrate to-version="5">
+    <migrate-command name="Send Email to Team">
+      <migrate-properties>
+        <migrate-property name="ucdUserName" old="ucdUserNamee" default="${p:UCBuildUserName}" />
+        <migrate-property name="ucdPassword" default="${p:UCBuildPassword}" />
+        <migrate-property name="ucdUrl" default="${p:UCBuildURL}" />
+      </migrate-properties>
+      <remove-properties>
+        <remove-property name="getTeamBy"/>
+      </remove-properties>
+    </migrate-command>
+  </migrate>
 </plugin-upgrade>

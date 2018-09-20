@@ -18,8 +18,16 @@ def getTeamBy = props['getTeamBy']
 def roles = props['roles']
 def appCompName = props['appCompName']
 def ucdUrl = props['ucdUrl']
-def ucdUserNamee = props['ucdUserNamee']
+def ucdUserNamee = props['ucdUserName']
 def ucdPassword = props['ucdPassword']
+def ucbProjectId = props['projectId']
+def ucbProcessId = props['processId']
+def msHost = props['msHost']
+def msPort = props['msPort']
+def msSecure = props['msSecure']
+def msFrom = props['msFrom']
+def msUser = props['msUser']
+def msPass = props['msPass']
 
 EmailTeam teamEmailer = null
 
@@ -39,6 +47,7 @@ roles.tokenize(',').each() {role -> roleList.add(role)}
 def emailList = []
 switch(getTeamBy) {
     // How should we search in the tool
+    // Default assumes UC Build
     case "byApp":
         emailList = teamEmailer.getEmailsByApp(appCompName, roleList)
         teamEmailer.sendUCDEmail(emailList,emailSubject,emailBody,attachment)
@@ -46,5 +55,16 @@ switch(getTeamBy) {
     case "byComp":
         emailList = teamEmailer.getEmailsByComp(appCompName, roleList)
         teamEmailer.sendUCDEmail(emailList,emailSubject,emailBody,attachment)
+        break
+    default:
+        if(msUser == "") {
+            msUser = null
+        }
+        if(msPass == "") {
+            msPass = null
+        }
+        emailList = teamEmailer.getEmailFromUcBuild(ucbProjectId, ucbProcessId, roleList)
+        teamEmailer.sendSMTPEmail(emailList,emailSubject,emailBody,attachment,msHost,msPort,
+            msSecure,msFrom,msUser,msPass)
         break
 }
