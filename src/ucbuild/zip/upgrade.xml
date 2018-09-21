@@ -41,4 +41,25 @@
       </remove-properties>
     </migrate-command>
   </migrate>
+  <migrate to-version="6">
+    <migrate-command name="Send Email to Team">
+      <remove-properties>
+       <remove-property name="getTeamBy"/>
+      </remove-properties>
+    </migrate-command>
+  </migrate>
+  <migrate to-version="7">
+    <migrate-command name="Send Email to Team">
+      <migrate-properties>
+        <migrate-property name="getTeamBy"/>
+      </migrate-properties>
+    </migrate-command>
+  </migrate>
+  <migrate to-version="8">
+    <migrate-command name="Send Email to Team">
+      <migrate-properties>
+        <migrate-property name="getTeamBy" default="byUCB"/>
+      </migrate-properties>
+    </migrate-command>
+  </migrate>
 </plugin-upgrade>

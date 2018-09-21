@@ -34,13 +34,13 @@
       <property name="projectId" required="true">
         <property-ui type="textBox"
           label="Project ID"
-          default-value="${p:project.id}"
+          default-value="${p:project/id}"
           description="UC Build Project ID associated with the team"/>
       </property>
       <property name="processId" required="true">
         <property-ui type="textBox"
           label="Process ID"
-          default-value="${p:process.id}"
+          default-value="${p:process/id}"
           description="UC Build Process ID associated with the team"/>
       </property>
       <property name="ucdUrl" required="true">
@@ -94,9 +94,12 @@
           description="Mail server password"/>
       </property>
       <property name="getTeamBy" required="true">
-        <property-ui type="textBox"
-          label="Obtain Team By:"
-          description="How to obtain the team, by application or by component"/>
+        <property-ui type="selectBox"
+                     label="Obtain Team By:"
+                     description="How to obtain the team, by application or by component"/>
+        <value label="By Application">byApp</value>
+        <value label="By Component">byComp</value>
+        <value label="UC Build">byUCB</value>
       </property>
     </properties>
     <post-processing>

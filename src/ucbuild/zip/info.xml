@@ -26,5 +26,14 @@
     <release-note plugin-version="4">
       Changed UC Build section to use new API for obtaining team information
     </release-note>
+    <release-note plugin-version="5">
+      Updated properties
+    </release-note>
+    <release-note plugin-version="6">
+      Removed getTeamBy from UCB Plugin
+    </release-note>
+    <release-note plugin-version="8">
+      Updated getTeamBy for UCB to resolve migration issues
+    </release-note>
   </release-notes>
 </pluginInfo>

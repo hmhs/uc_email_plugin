@@ -304,7 +304,8 @@ class EmailTeam {
      * @param message - Message body
      * @param attachment - Location of the attachment to add (optional)
      */
-    void sendUCDEmail (List<String> emails, String subject, String message, String attachment) {
+    void sendUCDEmail (List<String> emails, String subject, String message, String
+        attachment) {
 
         // create the rest client and get the system configuration
         com.urbancode.air.XTrustProvider.install()
@@ -397,11 +398,17 @@ class EmailTeam {
     }
 
     /**
-     * Method to send email using the UC Deploy configuration
+     * Method to send email using the SMTP Server
      * @param emails - List of email addresses
      * @param subject - Subject to be added to the message
      * @param message - Message body
      * @param attachment - Location of the attachment to add (optional)
+     * @param host - smtp host name
+     * @param port - smpt port
+     * @param secure - is the mail server secure
+     * @param fromAddress - sending email address
+     * @param username - Secure server login name
+     * @param mailPassword - Secure server password
      */
     void sendSMTPEmail (List<String> emails, String subject, String message, String attachment,
                         String host, String port, boolean secure, String fromAddress,

@@ -24,7 +24,7 @@ def ucbProjectId = props['projectId']
 def ucbProcessId = props['processId']
 def msHost = props['msHost']
 def msPort = props['msPort']
-def msSecure = props['msSecure']
+def msSecureString = props['msSecure']
 def msFrom = props['msFrom']
 def msUser = props['msUser']
 def msPass = props['msPass']
@@ -44,7 +44,7 @@ List<String> roleList = []
 
 // Get the roles into a comma separated list
 roles.tokenize(',').each() {role -> roleList.add(role)}
-def emailList = []
+List<String> emailList = []
 switch(getTeamBy) {
     // How should we search in the tool
     // Default assumes UC Build
@@ -56,15 +56,21 @@ switch(getTeamBy) {
         emailList = teamEmailer.getEmailsByComp(appCompName, roleList)
         teamEmailer.sendUCDEmail(emailList,emailSubject,emailBody,attachment)
         break
-    default:
+    case "byUCB":
         if(msUser == "") {
             msUser = null
         }
         if(msPass == "") {
             msPass = null
         }
+        if(msSecureString == "true") {
+            msSecure = true
+        }
+        else {
+            msSecure = false
+        }
         emailList = teamEmailer.getEmailFromUcBuild(ucbProjectId, ucbProcessId, roleList)
-        teamEmailer.sendSMTPEmail(emailList,emailSubject,emailBody,attachment,msHost,msPort,
+        teamEmailer.sendSMTPEmail(emailList.toList(),emailSubject,emailBody,attachment,msHost,msPort,
             msSecure,msFrom,msUser,msPass)
         break
 }
