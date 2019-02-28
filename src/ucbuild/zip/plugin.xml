@@ -4,7 +4,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <header>
     <identifier id="com.hmhs.underpinning.uc.ucd_email_plugin" version="@API_VERSION@" name="Email Team"/>
-    <description>Email Team Plugin for UC Deployy</description>
+    <description>Email Team Plugin for UC Build and Deploy</description>
     <tag>Utilities/Email Team Plugin</tag>
   </header>
 
@@ -31,10 +31,67 @@
                      label="Roles"
                      description="Comma separated List of Roles to send email to"/>
       </property>
-      <property name="appCompName" required="true">
+      <property name="projectId" required="true">
         <property-ui type="textBox"
-                     label="Component/Applicaiton Name"
-                     description="Name of the UC Deploy application or component"/>
+          label="Project ID"
+          default-value="${p:project/id}"
+          description="UC Build Project ID associated with the team"/>
+      </property>
+      <property name="processId" required="true">
+        <property-ui type="textBox"
+          label="Process ID"
+          default-value="${p:process/id}"
+          description="UC Build Process ID associated with the team"/>
+      </property>
+      <property name="ucdUrl" required="true">
+        <property-ui type="textBox"
+          label="UC Build URL"
+          default-value="${p:UCBuildURL}"
+          description="URL of UC Build"/>
+      </property>
+      <property name="ucdUserName" required="true">
+        <property-ui type="textBox"
+          label="UC Build User Name"
+          default-value="${p:UCBuildUserName}"
+          description="UC Build User Name"/>
+      </property>
+      <property name="ucdPassword" required="true">
+        <property-ui type="secureBox"
+          label="UC Build Password"
+          default-value="${p:UCBuildPassword}"
+          description="UC Build Password" />
+      </property>
+      <property name="msHost" required="true">
+        <property-ui type="textBox"
+          label="Mail Server Host"
+          description="Mail server to use for email"/>
+      </property>
+      <property name="msPort" required="true">
+        <property-ui type="textBox"
+          label="Mail Server Port"
+          default-value="25"
+          description="Mail server port to use for email"/>
+      </property>
+      <property name="msSecure">
+        <property-ui type="checkBox"
+          label="Secure"
+          default-value="false"
+          description="Secure Mail Server?"/>
+      </property>
+      <property name="msFrom" required="true">
+        <property-ui type="textBox"
+          label="From Email Address"
+          description="From Email Address"/>
+      </property>
+      <property name="msUser" required="false">
+        <property-ui type="textBox"
+          label="Mail Server User"
+          description="Mail server user"/>
+      </property>
+      <property name="msPass" required="false">
+        <property-ui type="secureBox"
+          label="Mail Server Password"
+          description="Mail server password"/>
       </property>
       <property name="getTeamBy" required="true">
         <property-ui type="selectBox"
@@ -42,21 +99,7 @@
                      description="How to obtain the team, by application or by component"/>
         <value label="By Application">byApp</value>
         <value label="By Component">byComp</value>
-      </property>
-      <property name="ucdUrl" required="true">
-        <property-ui type="textBox"
-                     label="UC Deploy URL"
-                     description="URL of UC Deploy to query for the team information"/>
-      </property>
-      <property name="ucdUserNamee" required="true">
-        <property-ui type="textBox"
-                     label="UC Deploy User Name"
-                     description="ID of UC Deploy user to use when connecting"/>
-      </property>
-      <property name="ucdPassword" required="true">
-        <property-ui type="secureBox"
-                     label="UC Deploy Password"
-                     description="Password of UC Deploy user to use when connecting"/>
+        <value label="UC Build">byUCB</value>
       </property>
     </properties>
     <post-processing>
