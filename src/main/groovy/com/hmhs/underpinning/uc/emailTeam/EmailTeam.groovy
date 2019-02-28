@@ -136,7 +136,7 @@ class EmailTeam {
         def teamInfo = performGetRequest(this.ucClient,this.baseUrl + addUrl)
 
         // If no information found for the team, return an empty list
-        if(teamInfo == null || teamInfo.size() != 0) {
+        if(teamInfo == null || teamInfo.size() == 0) {
             return returnList
         }
 
